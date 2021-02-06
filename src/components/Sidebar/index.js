@@ -10,7 +10,7 @@ const Sidebar = ({isOpen,toggle}) => {
                 <CloseIcon/>
             </Icon>
             <SidebarMenu>
-                <SidebarLink to="/"> pizzaas </SidebarLink>
+                <SidebarLink to="/pizzas"> pizzaas </SidebarLink>
                 <SidebarLink to="/"> desserts </SidebarLink>
                 <SidebarLink to="/"> full menu </SidebarLink>
             </SidebarMenu>

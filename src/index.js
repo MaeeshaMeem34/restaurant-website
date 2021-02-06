@@ -1,22 +1,21 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import { BrowserRouter, Route } from 'react-router-dom';
-import Cart from "./components/Cart";
+import React from "react";
+import ReactDOM from "react-dom";
 
-import App from './App';
-
+import "bootstrap/dist/css/bootstrap.min.css";
+import { AuthProvider } from "./components/contexts/AuthContext";
+import {AdminAuthProvider } from "./components/contexts/AdminAuthContext";
+import App from "./App";
+import { PizzaContextProvider } from "./components/contexts/ProductContext/PizzaContext";
 
 ReactDOM.render(
   <React.StrictMode>
-    <BrowserRouter>
-    <Route path="/" exact component={App} />
-    <Route path ='/cart' exact component ={Cart}/>
-
-    
-    </BrowserRouter>
-    
+    <AuthProvider>
+      <AdminAuthProvider> 
+        <PizzaContextProvider> 
+      <App />
+      </PizzaContextProvider>
+      </AdminAuthProvider>
+    </AuthProvider>
   </React.StrictMode>,
-  document.getElementById('root')
+  document.getElementById("root")
 );
-
-

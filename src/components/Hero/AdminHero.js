@@ -1,6 +1,9 @@
 import React, { useState } from "react";
-import Navbar from "../Navbar/UserNavbar/Navbar";
-import Sidebar from "../Sidebar";
+
+import NavAdmin from "../Navbar/AdminNavbar/NavAdmin";
+
+import Sidebar from "../Sidebar/index";
+
 
 import {
   HeroBtn,
@@ -11,7 +14,7 @@ import {
   HeroP,
 } from "./HeroElement";
 
-const Hero = () => {
+const AdminHero = () => {
 
     const [isOpen,setIsOpen] = useState(false);
     const toggle=()=>{
@@ -19,10 +22,11 @@ const Hero = () => {
     };
   return (
     <div>
-      <Navbar toggle={toggle} />
       <HeroContainer>
+       
         
-        <Sidebar isOpen={isOpen} toggle={toggle} />
+       <NavAdmin toggle={toggle} />
+       <Sidebar isOpen={isOpen} toggle={toggle} />
         <HeroContent>
           <HeroItems>
             <HeroH1>greatest Pizza Ever</HeroH1>
@@ -35,4 +39,4 @@ const Hero = () => {
   );
 };
 
-export default Hero;
+export default AdminHero ;

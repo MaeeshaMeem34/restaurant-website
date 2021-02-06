@@ -1,0 +1,10 @@
+npm install get-google-fonts
+npm install react-icons-kit
+npm install react-router-dom styled-components react-icons
+
+npm install bootstrap react-bootstrap
+
+npm install firebase
+
+
+
