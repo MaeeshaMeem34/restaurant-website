@@ -13,6 +13,7 @@ import {AdminAuthProvider } from "./components/contexts/AdminAuthContext";
 import AdminRoute from "./components/CustomRoutes/AdminRoute";
 import Pizzas from "./components/DisplayItems/Pizzas";
 import AdminDashboard from "./components/AdminDashboard";
+import PizzaTable from "./components/DisplayItems/PizzaTable";
 
 function App() {
   return (
@@ -26,8 +27,9 @@ function App() {
         <AdminRoute path="/admin" exact component={Admin} />
         <AdminRoute path="/admindashboard" exact component={AdminDashboard} />
 
-        <Route path="/admindashboard/addpizza" component ={AddPizza} />
-        <Route path="/pizzas" exact component={Pizzas } />
+        <AdminRoute path="/admindashboard/addpizza" component ={AddPizza} />
+        <AdminRoute path="/pizzas" exact component={Pizzas } />
+        <AdminRoute path="/pizzatable" exact component={PizzaTable } />
 
         </AdminAuthProvider>
         

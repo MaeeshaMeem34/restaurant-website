@@ -55,8 +55,8 @@ export const SidebarData = [
     },
    
     {
-      title: 'Team',
-      path: '/team',
+      title: 'Show Pizza',
+      path: '/pizzatable',
       icon: <IoIcons.IoMdPeople />
     },
     {

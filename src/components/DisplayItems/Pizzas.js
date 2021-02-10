@@ -26,7 +26,7 @@ const Pizzas = () => {
                             Rs {product.ProductPrice}.00
                     </div>
                         <button className='addcart-btn'>ADD TO CART</button>
-                    </div>
+                    </div >
                 ))}
             </div>
         </>
