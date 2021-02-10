@@ -6,5 +6,9 @@ npm install bootstrap react-bootstrap
 
 npm install firebase
 
+npm install --save react-toastify
+
+npm install react-toastify
+
 
 

@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 
-import { auth } from "./../../Firebase";
+import { auth } from "../../Firebase";
 
 const AdminContext = React.createContext();
 

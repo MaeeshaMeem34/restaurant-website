@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import { propTypes } from "react-bootstrap/esm/Image";
-import { auth } from "./../../Firebase";
+import { auth } from "../../Firebase";
 
 const AuthContext = React.createContext();
 

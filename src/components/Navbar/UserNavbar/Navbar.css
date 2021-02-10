@@ -37,6 +37,7 @@
   display: flex;
   color: #fff;
   align-items: center;
+  justify-content: center;
   height: 60px;
 }
 
@@ -60,7 +61,7 @@
 }
 
 .nav-links:hover {
-  background-color: #1888ff;
+  background-color: #EAA327;
   border-radius: 2px;
   transition: all 0.2s ease-out;
 
@@ -133,7 +134,7 @@
     margin: 2rem auto;
     border-radius: 4px;
     width: 80%;
-    background: #1888ff;
+    background: #EAA327;
     text-decoration: none;
     color: #fff;
     font-size: 1.5rem;
@@ -141,7 +142,7 @@
 
   .nav-links-mobile:hover {
     background: #fff;
-    color: #1888ff;
+    color: #EAA327;
     transition: 250ms;
   }
 

@@ -3,7 +3,7 @@ import { Button, Card, Form, Alert, Container } from "react-bootstrap";
 
 import {Link , useHistory} from 'react-router-dom';
 
-import {useAuth} from "./contexts/AuthContext"
+import {useAuth} from "./Contexts/AuthContext"
 
 const SignUp = () => {
   const nameRef = useRef();

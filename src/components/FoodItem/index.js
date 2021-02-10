@@ -1,4 +1,6 @@
 import React from 'react';
+import {useContext} from 'react'
+import {CartContext} from '../Contexts/CartContext'
 import {
   ProductsContainer,
   ProductWrapper,
@@ -16,6 +18,10 @@ import {
 // import {Link} from 'react-router-dom';
 
 const FoodItem = ({ heading, data }) => {
+
+  
+const { dispatch } = useContext(CartContext);
+
   return (
     <ProductsContainer>
       <ProductsHeading>{heading}</ProductsHeading>
@@ -29,7 +35,7 @@ const FoodItem = ({ heading, data }) => {
                 <ProductDesc>{product.desc}</ProductDesc>
                 <ProductPrice>{product.price}</ProductPrice>
                 
-                <ItemLink to="/cart"> add to cart </ItemLink>
+                    
               </ProductInfo>
             </ProductCard>
           );

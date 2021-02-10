@@ -4,8 +4,12 @@ import { Link, useHistory } from "react-router-dom";
 import Button from "./Button";
 import Dropdown from "./Dropdown";
 import "./Navbar.css";
-import {useAuth } from "../../contexts/AuthContext";
+import {useAuth } from "../../Contexts/AuthContext";
 import {AiOutlineShoppingCart} from "react-icons/ai"
+import { Icon } from 'react-icons-kit'
+import { cart } from 'react-icons-kit/entypo/cart'
+import { CartContext } from '../../Contexts/CartContext'
+import { useContext } from 'react'
 
 const Navbar = ({ toggle }) => {
   const history= useHistory();
@@ -14,6 +18,9 @@ const Navbar = ({ toggle }) => {
   const [error, setError] = useState("");
 
   const {currentUser, logout} = useAuth();
+
+  const { totalQty } = useContext(CartContext);
+
   const handleLogout = async () => {
     setError("");
     try {
@@ -25,6 +32,7 @@ const Navbar = ({ toggle }) => {
     }
   };
 
+  console.log(currentUser);
   const handleClick = () => {
     setClick(!click);
   };
@@ -91,9 +99,10 @@ const Navbar = ({ toggle }) => {
         </ul>
         <li className="nav-item">
            
-           <Link to="/" >
-           <AiOutlineShoppingCart size="30px" color="#fff" />
-             </Link>  
+        <span><Link to="/cart" className='navlink'><Icon icon={cart} /></Link></span>
+                <div className='relative'>
+                <span className='no-of-products'>{totalQty}</span>
+                </div> 
         </li>
 
         <li className="nav-item">
