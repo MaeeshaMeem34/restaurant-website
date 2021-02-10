@@ -1,6 +1,6 @@
 import React from "react";
 import {Route, Redirect } from 'react-router-dom';
-import { useAdminAuth } from "../contexts/AdminAuthContext";
+import { useAdminAuth } from "../Contexts/AdminAuthContext";
 
 
 

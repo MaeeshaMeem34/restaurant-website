@@ -2,8 +2,8 @@ import React, { useRef, useState } from "react";
 import { Button, Card, Form, Alert, Container } from "react-bootstrap";
 
 import { Link, useHistory } from "react-router-dom";
-import {useAuth} from "./contexts/AuthContext";
-import {useAdminAuth} from "./contexts/AdminAuthContext";
+import {useAuth} from "./Contexts/AuthContext";
+import {useAdminAuth} from "./Contexts/AdminAuthContext";
 
 const LogIn = () => {
   const emailRef = useRef();
