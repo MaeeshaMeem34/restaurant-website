@@ -1,24 +1,29 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import './index.css';
+import "./index.css";
+import { CartContextProvider } from "./components/contexts/CartContext";
+
 import "bootstrap/dist/css/bootstrap.min.css";
-import { AuthProvider } from "./Components/Contexts/AuthContext";
-import {AdminAuthProvider } from "./Components/Contexts/AdminAuthContext";
+import { AuthProvider } from "./components/contexts/AuthContext";
+import { AdminAuthProvider } from "./components/contexts/AdminAuthContext";
 import App from "./App";
-import { PizzaContextProvider } from "./Components/Contexts/ProductContext/PizzaContext";
-import {CartContextProvider} from "./Components/Contexts/CartContext"
+import { PizzaContextProvider } from "./components/contexts/ProductContext/PizzaContext";
+import { DessertContextProvider } from "./components/contexts/ProductContext/DessertContext";
+
 
 ReactDOM.render(
-  <React.StrictMode>
+  
     <AuthProvider>
-      <AdminAuthProvider> 
-        <PizzaContextProvider> 
-        <CartContextProvider>
-      <App />
-      </CartContextProvider>
-      </PizzaContextProvider>
+      <AdminAuthProvider>
+        <PizzaContextProvider>
+        <DessertContextProvider> 
+          <CartContextProvider>
+            <App />
+          </CartContextProvider>
+          </DessertContextProvider>
+        </PizzaContextProvider>
       </AdminAuthProvider>
     </AuthProvider>
-  </React.StrictMode>,
+  ,
   document.getElementById("root")
 );

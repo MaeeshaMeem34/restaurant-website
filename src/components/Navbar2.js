@@ -5,7 +5,7 @@ import { auth } from '../Firebase'
 import { Icon } from 'react-icons-kit'
 import { cart } from 'react-icons-kit/entypo/cart'
 import { useHistory } from 'react-router-dom'
-import { CartContext } from './Contexts/CartContext'
+import { CartContext } from './contexts/CartContext'
 
 export const Navbar2 = ({user}) => {
 
@@ -35,12 +35,12 @@ export const Navbar2 = ({user}) => {
             </div>}
             {user && <div className='rightside'>
                 <span><Link to="/" className='navlink'>{user}</Link></span>
-                <span><Link to="cartproducts" className='navlink'><Icon icon={cart} /></Link></span>
+                <span><Link to="cartproducts" className='navlink'><Icon icon={cart} size="20px" /></Link></span>
                 <div className='relative'>
-                <span className='no-of-products'>{totalQty}</span>
+                <span className='no-of-products'>{totalQty }</span>
                 </div>
                 <span><button className='logout-btn' onClick={handleLogout}>Logout</button></span>
             </div>}
-        </div>
+        </div >
     )
 }

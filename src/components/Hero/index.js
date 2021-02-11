@@ -11,7 +11,7 @@ import {
   HeroP,
 } from "./HeroElement";
 
-const Hero = () => {
+const Hero = ({user}) => {
 
     const [isOpen,setIsOpen] = useState(false);
     const toggle=()=>{
@@ -19,7 +19,7 @@ const Hero = () => {
     };
   return (
     <div>
-      <Navbar toggle={toggle} />
+      <Navbar user={user} toggle={toggle} />
       <HeroContainer>
         
         <Sidebar isOpen={isOpen} toggle={toggle} />

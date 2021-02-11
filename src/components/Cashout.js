@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react'
 import { auth, db } from '../Firebase'
-import { CartContext } from './Contexts/CartContext'
+import { CartContext } from './contexts/CartContext'
 import { Navbar2 } from './Navbar2';
 import { useHistory } from 'react-router-dom'
 

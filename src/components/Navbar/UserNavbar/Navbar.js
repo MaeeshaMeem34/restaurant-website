@@ -4,14 +4,14 @@ import { Link, useHistory } from "react-router-dom";
 import Button from "./Button";
 import Dropdown from "./Dropdown";
 import "./Navbar.css";
-import {useAuth } from "../../Contexts/AuthContext";
+import {useAuth } from "../../contexts/AuthContext";
 import {AiOutlineShoppingCart} from "react-icons/ai"
 import { Icon } from 'react-icons-kit'
 import { cart } from 'react-icons-kit/entypo/cart'
-import { CartContext } from '../../Contexts/CartContext'
+import { CartContext } from '../../contexts/CartContext'
 import { useContext } from 'react'
 
-const Navbar = ({ toggle }) => {
+const Navbar = ({ toggle, user }) => {
   const history= useHistory();
   const [click, setClick] = useState(false);
   const [dropdown, setDropdown] = useState(false);
@@ -93,13 +93,13 @@ const Navbar = ({ toggle }) => {
 
           <li className="nav-item">
 
-            { currentUser ?    currentUser.email : <Button /> }
+            { user ?    user : <Button /> }
             
           </li>
         </ul>
         <li className="nav-item">
            
-        <span><Link to="/cart" className='navlink'><Icon icon={cart} /></Link></span>
+        <span><Link to="/cart" className='navlink'><Icon icon={cart} size="25px" /></Link></span>
                 <div className='relative'>
                 <span className='no-of-products'>{totalQty}</span>
                 </div> 

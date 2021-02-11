@@ -1,39 +1,47 @@
 import React, { useRef, useState } from "react";
 import { Button, Card, Form, Alert, Container } from "react-bootstrap";
 
-import {Link , useHistory} from 'react-router-dom';
+import { Link, useHistory } from "react-router-dom";
+import { db, auth } from "../Firebase";
 
-import {useAuth} from "./Contexts/AuthContext"
+import { useAuth } from "./contexts/AuthContext";
 
 const SignUp = () => {
-  const nameRef = useRef();
-  const emailRef = useRef();
-  const passwordRef = useRef();
-  const confirmPasswordRef = useRef();
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
-  const history= useHistory();
+  const history = useHistory();
 
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
-  const { signup } = useAuth();
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (passwordRef.current.value != confirmPasswordRef.current.value) {
-      return setError("password do not match!");
-    }
     try {
       setLoading(true);
       setError("");
-      await signup(emailRef.current.value, passwordRef.current.value);
-      history.push("/login");
+      auth.createUserWithEmailAndPassword(email, password).then((cred) => {
+        db.collection("UserData")
+          .doc(cred.user.uid)
+          .set({
+            Name: name,
+            Email: email,
+            Password: password,
+          })
+          .then(() => {
+            setName("");
+            setEmail("");
+            setPassword("");
+            setError("");
+            history.push("/login");
+          });
+      });
     } catch (error) {
       setError(error);
     }
     setLoading(false);
   };
-
-  
 
   return (
     <Container
@@ -54,25 +62,37 @@ const SignUp = () => {
             <Form onSubmit={handleSubmit}>
               <Form.Group id="name">
                 <Form.Label>Name</Form.Label>
-                <Form.Control ref={nameRef} type="text" required />
+                <Form.Control
+                  type="text"
+                  required
+                  onChange={(e) => {
+                    setName(e.target.value);
+                  }}
+                  value={name}
+                />
               </Form.Group>
 
               <Form.Group id="email">
                 <Form.Label>Email</Form.Label>
-                <Form.Control ref={emailRef} type="email" required />
+                <Form.Control
+                  type="email"
+                  required
+                  onChange={(e) => {
+                    setEmail(e.target.value);
+                  }}
+                  value={email}
+                />
               </Form.Group>
 
               <Form.Group id="password">
                 <Form.Label>Password</Form.Label>
-                <Form.Control ref={passwordRef} type="password" required />
-              </Form.Group>
-
-              <Form.Group id="confirm-password">
-                <Form.Label>Confirm Password</Form.Label>
                 <Form.Control
-                  ref={confirmPasswordRef}
                   type="password"
                   required
+                  onChange={(e) => {
+                    setPassword(e.target.value);
+                  }}
+                  value={password}
                 />
               </Form.Group>
 
@@ -86,7 +106,7 @@ const SignUp = () => {
 
         <div className="w-100 text-center mt-2">
           Already have an account?
-          <Link to= '/login'> Login! </Link>
+          <Link to="/login"> Login! </Link>
         </div>
       </div>
     </Container>

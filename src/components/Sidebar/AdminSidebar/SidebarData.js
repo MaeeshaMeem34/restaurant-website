@@ -42,7 +42,7 @@ export const SidebarData = [
         },
         {
           title: 'Add Dessert',
-          path: '/reports/reports2',
+          path: '/admindashboard/adddessert',
           icon: <FaIcons.FaCartPlus />,
           cName: 'sub-nav'
         },

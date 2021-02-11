@@ -1,13 +1,14 @@
 import React,{useContext} from 'react'
-import { PizzaContext } from '../contexts/ProductContext/PizzaContext';
+
 import {CartContext} from '../contexts/CartContext'
 import "./Pizzas.css";
 import { Navbar } from '../Navbar/UserNavbar/Navbar'
 import {Navbar2} from '../Navbar2'
+import { DessertContext } from '../contexts/ProductContext/DessertContext';
 
 
-const Pizzas = () => {
-    const { pizzas } = useContext(PizzaContext);
+const Desserts = () => {
+    const {  Desserts } = useContext(DessertContext);
 
    const {dispatch} =useContext(CartContext)
     
@@ -20,10 +21,10 @@ const Pizzas = () => {
             <>
             
        
-            {pizzas.length !== 0 && <h1>Pizzas</h1>}
+            { Desserts.length !== 0 && <h1>Desserts</h1>}
             <div className='products-container'>
-                {pizzas.length === 0 && <div>slow internet...no products to display</div>}
-                {pizzas.map(product => (
+                { Desserts.length === 0 && <div>slow internet...no products to display</div>}
+                { Desserts.map(product => (
                     <div className='product-card' key={product.ID}>
                         <div className='product-img'>
                             <img src={product.ProductImg} alt="not found" />
@@ -44,4 +45,4 @@ const Pizzas = () => {
     )
 }
 
-export default Pizzas;
+export default Desserts;

@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from 'react'
-import { CartContext } from './Contexts/CartContext'
+import { CartContext } from './contexts/CartContext'
 import { Icon } from 'react-icons-kit'
 import {Navbar2} from './Navbar2'
 import { ic_add } from 'react-icons-kit/md/ic_add'
@@ -7,25 +7,21 @@ import { ic_remove } from 'react-icons-kit/md/ic_remove'
 import { iosTrashOutline } from 'react-icons-kit/ionicons/iosTrashOutline'
 import { Link } from 'react-router-dom'
 import { useHistory } from 'react-router-dom'
-import { auth } from '../Firebase'
+import { auth } from '../Firebase';
 
-const Cart = ({ user }) => {
-
-    const { shoppingCart, dispatch, totalPrice, totalQty } = useContext(CartContext);
+const Cart = ({user}) => {
+    const {shoppingCart, dispatch, totalPrice, totalQty} = useContext(CartContext);
+   
+    
 
     const history = useHistory();
 
-    useEffect(() => {
-        auth.onAuthStateChanged(user => {
-            if (!user) {
-                history.push('/login');
-            }
-        })
-    })
+ 
 
     return (
         <>
-        <Navbar2 user = {user} />
+
+<Navbar2 user={user} />
             <>
                 {shoppingCart.length !== 0 && <h1>Cart</h1>}
                 <div className='cart-container'>
@@ -36,7 +32,7 @@ const Cart = ({ user }) => {
                         </>
                     }
                     {shoppingCart && shoppingCart.map(cart => (
-                        <div className='cart-card' key={cart.ProductID}>
+                        <div className='cart-card' key={cart.ID}>
 
                             <div className='cart-img'>
                                 <img src={cart.ProductImg} alt="not found" />
@@ -46,13 +42,13 @@ const Cart = ({ user }) => {
 
                             <div className='cart-price-orignal'>Rs {cart.ProductPrice}.00</div>
 
-                            <div className='inc' onClick={() => dispatch({ type: 'INC', id: cart.ProductID, cart })}>
+                            <div className='inc' onClick={() => dispatch({ type: 'INC', id: cart.ID, cart })}>
                                 <Icon icon={ic_add} size={24} />
                             </div>
 
                             <div className='quantity'>{cart.qty}</div>
 
-                            <div className='dec' onClick={() => dispatch({ type: 'DEC', id: cart.ProductID, cart })}>
+                            <div className='dec' onClick={() => dispatch({ type: 'DEC', id: cart.ID, cart })}>
                                 <Icon icon={ic_remove} size={24} />
                             </div>
 
@@ -60,7 +56,7 @@ const Cart = ({ user }) => {
                                 Rs {cart.TotalProductPrice}.00
                             </div>
 
-                            <button className='delete-btn' onClick={() => dispatch({ type: 'DELETE', id: cart.ProductID, cart })}>
+                            <button className='delete-btn' onClick={() => dispatch({ type: 'DELETE', id: cart.ID, cart })}>
                                 <Icon icon={iosTrashOutline} size={24} />
                             </button>
                         </div>
@@ -78,7 +74,7 @@ const Cart = ({ user }) => {
                             <span>Total Qty</span>
                             <span>{totalQty}</span>
                         </div>
-                        <Link to='/cashout' className='cashout-link'>
+                        <Link to='cashout' className='cashout-link'>
                             <button className='btn btn-success btn-md' style={{ marginTop: 5 + 'px' }}>
                                 Cash on delivery
                         </button>
@@ -86,6 +82,7 @@ const Cart = ({ user }) => {
                     </div>}
                 </div>
             </>
+        
         </>
     )
 }

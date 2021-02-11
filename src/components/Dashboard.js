@@ -3,10 +3,10 @@ import FoodItem from "./FoodItem/index";
 import { productData } from "./FoodItem/data";
 import Hero from "./Hero";
 
-const Dashboard = () => {
+const Dashboard = ({user}) => {
     return (
         <div>
-             <Hero />
+             <Hero  user={user}/>
       <FoodItem heading= 'choose your food' data={productData}/>
             
         </div>

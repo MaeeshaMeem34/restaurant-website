@@ -2,45 +2,38 @@ import React, { useRef, useState } from "react";
 import { Button, Card, Form, Alert, Container } from "react-bootstrap";
 
 import { Link, useHistory } from "react-router-dom";
-import {useAuth} from "./Contexts/AuthContext";
-import {useAdminAuth} from "./Contexts/AdminAuthContext";
+import { auth } from "../Firebase";
+
+import { useAdminAuth } from "./contexts/AdminAuthContext";
 
 const LogIn = () => {
-  const emailRef = useRef();
-  const passwordRef = useRef();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   const history = useHistory();
 
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
-  const { login } = useAuth();
-  const { adminlogin} = useAdminAuth();
+  const { adminlogin } = useAdminAuth();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-   
+
     try {
       setLoading(true);
-      setError("");
-      if(emailRef.current.value == "admin@gmail.com"){
-        await adminlogin(emailRef.current.value, passwordRef.current.value);
-        history.push("/admin")
-      }
-      
-      else{
-        await login(emailRef.current.value, passwordRef.current.value);
-        history.push("/dashboard");
 
-      }
-     
+      auth.signInWithEmailAndPassword(email, password).then(() => {
+        setEmail("");
+        setPassword("");
+        setError("");
+        history.push("/");
+      });
     } catch (error) {
       setError(error);
     }
     setLoading(false);
   };
-
- 
 
   return (
     <Container
@@ -61,12 +54,26 @@ const LogIn = () => {
             <Form onSubmit={handleSubmit}>
               <Form.Group id="email">
                 <Form.Label>Email</Form.Label>
-                <Form.Control ref={emailRef} type="email" required />
+                <Form.Control
+                  type="email"
+                  required
+                  onChange={(e) => {
+                    setEmail(e.target.value);
+                  }}
+                  value={email}
+                />
               </Form.Group>
 
               <Form.Group id="password">
                 <Form.Label>Password</Form.Label>
-                <Form.Control ref={passwordRef} type="password" required />
+                <Form.Control
+                  type="password"
+                  required
+                  onChange={(e) => {
+                    setPassword(e.target.value);
+                  }}
+                  value={password}
+                />
               </Form.Group>
 
               <Button disabled={loading} className="w-100" type="submit">
