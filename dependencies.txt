@@ -9,6 +9,7 @@ npm install firebase
 npm install --save react-toastify
 
 npm install react-toastify
+npm install emailjs-com --save
 
 
 

@@ -10,6 +10,9 @@ const LogIn = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  const emailRef = useRef();
+  const passwordRef = useRef();
+
   const history = useHistory();
 
   const [error, setError] = useState("");
@@ -20,19 +23,21 @@ const LogIn = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    try {
-      setLoading(true);
-
-      auth.signInWithEmailAndPassword(email, password).then(() => {
-        setEmail("");
-        setPassword("");
-        setError("");
-        history.push("/");
-      });
-    } catch (error) {
-      setError(error);
+    if (
+      emailRef.current.value === "admin@gmail.com" &&
+      passwordRef.current.value === "password"
+    ) {
+      history.push("/admin");
+    } else {
+     await auth
+        .signInWithEmailAndPassword(email, password)
+        .then(() => {
+          history.push("/");
+        })
+        .catch((error) => {
+          setError(error);
+        });
     }
-    setLoading(false);
   };
 
   return (
@@ -55,6 +60,7 @@ const LogIn = () => {
               <Form.Group id="email">
                 <Form.Label>Email</Form.Label>
                 <Form.Control
+                  ref={emailRef}
                   type="email"
                   required
                   onChange={(e) => {
@@ -67,6 +73,7 @@ const LogIn = () => {
               <Form.Group id="password">
                 <Form.Label>Password</Form.Label>
                 <Form.Control
+                  ref={passwordRef}
                   type="password"
                   required
                   onChange={(e) => {

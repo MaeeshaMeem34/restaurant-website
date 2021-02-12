@@ -1,12 +1,18 @@
-import React,{useContext} from 'react'
+import React,{useContext, useState} from 'react'
 import { PizzaContext } from '../contexts/ProductContext/PizzaContext';
 import {CartContext} from '../contexts/CartContext'
 import "./Pizzas.css";
-import { Navbar } from '../Navbar/UserNavbar/Navbar'
-import {Navbar2} from '../Navbar2'
+import Navbar  from '../Navbar/UserNavbar/Navbar';
+import Sidebar from "../Sidebar/index"
 
 
-const Pizzas = () => {
+
+const Pizzas = ({user}) => {
+
+    const [isOpen,setIsOpen] = useState(false);
+    const toggle=()=>{
+        setIsOpen(!isOpen);
+    };
     const { pizzas } = useContext(PizzaContext);
 
    const {dispatch} =useContext(CartContext)
@@ -16,7 +22,8 @@ const Pizzas = () => {
 
     return (
         <>
-        <Navbar2/>
+         <Navbar user={user} toggle={toggle}  />
+         <Sidebar isOpen={isOpen} toggle={toggle} />
             <>
             
        

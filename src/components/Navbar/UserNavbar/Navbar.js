@@ -17,7 +17,7 @@ const Navbar = ({ toggle, user }) => {
   const [dropdown, setDropdown] = useState(false);
   const [error, setError] = useState("");
 
-  const {currentUser, logout} = useAuth();
+  const {logout} = useAuth();
 
   const { totalQty } = useContext(CartContext);
 
@@ -32,7 +32,7 @@ const Navbar = ({ toggle, user }) => {
     }
   };
 
-  console.log(currentUser);
+
   const handleClick = () => {
     setClick(!click);
   };
@@ -50,20 +50,21 @@ const Navbar = ({ toggle, user }) => {
   return (
     <>
       <nav className="navbar">
-        <Link to="/" className="navbar-logo">
+      <Link to="/" className="navbar-logo">
           {" "}
           PiZZA{" "}
         </Link>
 
-        <div className="menu-icon" onClick={handleClick}>
-          <i className={click ? "fas fa-times" : "fas fa-bars"} />
-        </div>
+      
+
+       
 
         <ul className={click ? "nav-menu active" : "nav-menu"}>
           <li className="nav-item">
-            <Link to="/" className="nav-links" onClick={handleLogout}>
+            {user ?  <Link to="/" className="nav-links" onClick={handleLogout}>
              Log out
-            </Link>
+            </Link> : null }
+            
           </li>
           <li className="nav-item" onMouseEnter={onMouseEnter}
               onMouseLeave={onMouseLeave}>
@@ -97,12 +98,16 @@ const Navbar = ({ toggle, user }) => {
             
           </li>
         </ul>
+
+      
+
         <li className="nav-item">
            
-        <span><Link to="/cart" className='navlink'><Icon icon={cart} size="25px" /></Link></span>
+        <Link to="/cart" className='navlink'><Icon icon={cart} size="25px" /></Link>
                 <div className='relative'>
                 <span className='no-of-products'>{totalQty}</span>
                 </div> 
+                
         </li>
 
         <li className="nav-item">

@@ -8,9 +8,9 @@ export class PizzaContextProvider extends React.Component{
         pizzas:[]
     }
 
-    componentDidMount(){
+    async componentDidMount(){
         const prevItem = this.state.pizzas;
-        db.collection('Products').onSnapshot(snapshot=>{
+        await db.collection('Products').onSnapshot(snapshot=>{
             let changes = snapshot.docChanges();
             changes.forEach(change => 
                 {
