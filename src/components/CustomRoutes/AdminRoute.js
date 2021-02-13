@@ -4,22 +4,23 @@ import { useAdminAuth } from "../contexts/AdminAuthContext";
 
 
 
-const AdminRoute= ({component: Component, ...rest}) =>{
-    const { admin } = useAdminAuth();
+const AdminRoute= ({component: Component,user, ...rest}) =>{
+    //const { admin } = useAdminAuth();
     
 
     return ( 
     <Route
     {...rest}
+    user={user}
     render={(props)=>{
 
         
-            if( admin ){
+            if( user=="admin" ){
                 return <Component {...props} /> 
                 
 
             }else{
-              return   <Redirect to='/' />
+              return   <Redirect to='/login' />
 
             }
         

@@ -6,9 +6,9 @@ import Cart from "./components/Cart";
 import LogIn from "./components/Login";
 import SignUp from "./components/SignUp";
 import Dashboard from "./components/Dashboard";
-import Admin from "./components/Admin";
-import AddPizza from "./components/AddProducts/AddPizza";
 
+import AddPizza from "./components/AddProducts/AddPizza";
+import AdminRoute from "./components/CustomRoutes/AdminRoute"
 
 import Pizzas from "./components/DisplayItems/Pizzas";
 import AdminDashboard from "./components/AdminDashboard";
@@ -50,14 +50,14 @@ useEffect(() => {
       <Route path="/signup" exact component={SignUp} />
       <Route path="/cashout" exact component={()=> <Cashout user={user}/>} />
 
-      <Route path="/admin" exact component={Admin} />
-      <Route path="/admindashboard" exact component={AdminDashboard} />
+      
+      <AdminRoute user={user} path="/admindashboard" exact component={()=><AdminDashboard user={user}/>} />
 
-      <Route path="/admindashboard/addpizza" component={AddPizza} />
-      <Route path="/pizzas" exact component={()=> <Pizzas user={user}/>} />
-      <Route path="/pizzatable" exact component={PizzaTable} />
+      <AdminRoute user={user} path="/admindashboard/addpizza" component={()=><AddPizza user={user}/>} />
+      <Route  path="/pizzas" exact component={()=> <Pizzas user={user}/>} />
+      <AdminRoute user={user} path="/pizzatable" exact component={()=><PizzaTable user={user}/>} />
 
-      <Route path="/admindashboard/adddessert" component={AddDessert} />
+      <AdminRoute user={user} path="/admindashboard/adddessert" component={()=><AddDessert user={user}/>} />
       <Route path="/desserts" exact component={()=> <Desserts user={user}/>} />
 
 

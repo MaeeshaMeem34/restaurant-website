@@ -54,14 +54,10 @@ export const SidebarData = [
       ]
     },
    
+    
     {
-      title: 'Show Pizza',
-      path: '/pizzatable',
-      icon: <IoIcons.IoMdPeople />
-    },
-    {
-      title: 'Messages',
-      path: '/messages',
+      title: 'Display Items',
+      path: '#',
       icon: <FaIcons.FaEnvelopeOpenText />,
   
       iconClosed: <RiIcons.RiArrowDownSFill />,
@@ -69,13 +65,13 @@ export const SidebarData = [
   
       subNav: [
         {
-          title: 'Message 1',
-          path: '/messages/message1',
+          title: 'Pizzas',
+          path: '/pizzatable',
           icon: <IoIcons.IoIosPaper />
         },
         {
-          title: 'Message 2',
-          path: '/messages/message2',
+          title: 'Desserts',
+          path: '/desserttable',
           icon: <IoIcons.IoIosPaper />
         }
       ]

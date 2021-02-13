@@ -3,13 +3,13 @@
 
 export const MenuItems =[
     {
-        title: "Marketing",
-        path: "/marketing",
+        title: "Contact Us",
+        path: "/contact",
         cName: 'dropdown-link'
     },
     {
         title: "Help",
-        path: "/marketing",
+        path: "/help",
         cName: 'dropdown-link'
     },
     {

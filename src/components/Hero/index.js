@@ -27,7 +27,7 @@ const Hero = ({user}) => {
           <HeroItems>
             <HeroH1>greatest Pizza Ever</HeroH1>
             <HeroP> Ready in 60s</HeroP>
-            <HeroBtn> Place Order </HeroBtn>
+            <HeroBtn onClick={toggle}  > Place Order </HeroBtn>
           </HeroItems>
         </HeroContent>
       </HeroContainer>

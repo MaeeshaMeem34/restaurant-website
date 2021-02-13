@@ -4,20 +4,25 @@ import { Link, useHistory } from "react-router-dom";
 import Button from "./Button";
 import Dropdown from "./Dropdown";
 import "./Navbar.css";
-import {useAuth } from "../../contexts/AuthContext";
-import {AiOutlineShoppingCart} from "react-icons/ai"
-import { Icon } from 'react-icons-kit'
-import { cart } from 'react-icons-kit/entypo/cart'
-import { CartContext } from '../../contexts/CartContext'
-import { useContext } from 'react'
+import { useAuth } from "../../contexts/AuthContext";
+import { AiOutlineShoppingCart } from "react-icons/ai";
+import { Icon } from "react-icons-kit";
+import { cart } from "react-icons-kit/entypo/cart";
+import { CartContext } from "../../contexts/CartContext";
+import { useContext } from "react";
+
+
+
 
 const Navbar = ({ toggle, user }) => {
-  const history= useHistory();
+
+
+  const history = useHistory();
   const [click, setClick] = useState(false);
   const [dropdown, setDropdown] = useState(false);
   const [error, setError] = useState("");
 
-  const {logout} = useAuth();
+  const { logout } = useAuth();
 
   const { totalQty } = useContext(CartContext);
 
@@ -31,7 +36,6 @@ const Navbar = ({ toggle, user }) => {
       setError(error);
     }
   };
-
 
   const handleClick = () => {
     setClick(!click);
@@ -50,71 +54,70 @@ const Navbar = ({ toggle, user }) => {
   return (
     <>
       <nav className="navbar">
-      <Link to="/" className="navbar-logo">
+        <Link to="/" className="navbar-logo">
           {" "}
           PiZZA{" "}
         </Link>
 
-      
-
        
 
         <ul className={click ? "nav-menu active" : "nav-menu"}>
-          <li className="nav-item">
-            {user ?  <Link to="/" className="nav-links" onClick={handleLogout}>
-             Log out
-            </Link> : null }
-            
+        <li className="nav-item">
+            {user == "admin" ? (
+              <Link to="/admindashboard" className="nav-links" onClick={closeMobileMenu}>
+                {" "}
+                Dashboard{" "}
+              </Link>
+            ) : null}
           </li>
-          <li className="nav-item" onMouseEnter={onMouseEnter}
-              onMouseLeave={onMouseLeave}>
-            <Link
-              
-              className="nav-links"
-              onClick={closeMobileMenu}
-              
-            >
+         
+          <li
+            className="nav-item"
+            onMouseEnter={onMouseEnter}
+            onMouseLeave={onMouseLeave}
+          >
+            <Link className="nav-links" onClick={closeMobileMenu}>
               Services <i className="fas fa-caret-down" />
             </Link>
             {dropdown && <Dropdown />}
           </li>
 
           <li className="nav-item">
-            <Link to="/" className="nav-links" onClick={closeMobileMenu}>
-              {" "}
-              Contact Us
+            <Link to="/feedback" className="nav-links" onClick={closeMobileMenu}>
+              
+              Feedback
             </Link>
           </li>
-          <li className="nav-item">
-            <Link to="/" className="nav-links" onClick={closeMobileMenu}>
-              {" "}
-              Feedback{" "}
-            </Link>
-          </li>
+        
 
           <li className="nav-item">
-
-            { user ?    user : <Button /> }
-            
+            {user ? (
+              <Link to="/" className="nav-links" onClick={handleLogout}>
+                Log out
+              </Link>
+            ) : null}
           </li>
-        </ul>
 
       
 
+          <li className="nav-item">    {user ? "Welcome "+ user+"!" : <Button />}</li>
+        </ul>
+
         <li className="nav-item">
+          <Link to="/cart" className="nav-cartIcon">
+            <Icon icon={cart} size="25px"/>
            
-        <Link to="/cart" className='navlink'><Icon icon={cart} size="25px" /></Link>
-                <div className='relative'>
-                <span className='no-of-products'>{totalQty}</span>
-                </div> 
-                
+          </Link>
+          <div style={{paddingLeft: "215px",paddingBottom:"32px"}}>
+          {totalQty}
+          </div>
         </li>
 
         <li className="nav-item">
-        
           <p className="nav-p" onClick={toggle}>
             Menu
           </p>
+        
         </li>
       </nav>
     </>

@@ -27,7 +27,13 @@ const LogIn = () => {
       emailRef.current.value === "admin@gmail.com" &&
       passwordRef.current.value === "password"
     ) {
-      history.push("/admin");
+      await auth
+      .signInWithEmailAndPassword(emailRef.current.value, passwordRef.current.value)
+      .then(() => {
+        history.push("/");
+      })
+
+      
     } else {
      await auth
         .signInWithEmailAndPassword(email, password)

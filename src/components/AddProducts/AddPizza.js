@@ -1,9 +1,14 @@
 import React, { useState } from "react";
 import {storage, db} from "../../Firebase";
-import NavAdmin from "../Navbar/AdminNavbar/NavAdmin";
+
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import Navbar from "../Navbar/UserNavbar/Navbar";
+
+toast.configure();
 
 
-const AddPizza = () => {
+const AddPizza = ({user}) => {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState(0);
@@ -26,22 +31,31 @@ const AddPizza = () => {
 
   }
 
-  const addproduct=(e)=>{
+  const addproduct=async (e)=>{
       e.preventDefault();
-      console.log(name, price);
-      const uploadTask = storage.ref(`product-images/${image.name}`).put(image);
+      
+       const uploadTask = storage.ref(`product-images/${image.name}`).put(image);
         uploadTask.on('state_changed', snapshot => {
             const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
             console.log(progress);
         }, err => setError(err.message)
-            , () => {
-                storage.ref('product-images').child(image.name).getDownloadURL().then(url => {
-                    db.collection('Products').add({
+            , async () => {
+               await storage.ref('product-images').child(image.name).getDownloadURL().then(url => {
+                   db.collection('Products').add({
                         ProductName: name,
                         ProductDescription: description,
                         ProductPrice: Number(price),
                         ProductImg: url
                     }).then(() => {
+                      toast.info("Item added successfully", {
+                        position: "top-right",
+                        autoClose: 1000,
+                        hideProgressBar: false,
+                        closeOnClick: true,
+                        pauseOnHover: false,
+                        draggable: false,
+                        progress: undefined,
+                      });
                         setName('');
                         setDescription('');
                         setPrice(0)
@@ -56,7 +70,7 @@ const AddPizza = () => {
   return (
 
     <>
-    <NavAdmin />
+    <Navbar user={user}/>
      
     <div className="container">
 
@@ -73,7 +87,7 @@ const AddPizza = () => {
 
         <label htmlFor="product-description"> Description </label>
         <br />
-        <input type="text" className="form-control" required
+        <input type="text" className="form-control"
         onChange ={(e)=>{ setDescription(e.target.value)}} value={description} />
 
         <label htmlFor="product-price"> Price </label>

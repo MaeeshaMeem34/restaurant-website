@@ -1,9 +1,10 @@
 import React,{useState} from 'react'
-import NavAdmin from './Navbar/AdminNavbar/NavAdmin';
+
+import Navbar from './Navbar/UserNavbar/Navbar';
 import AdminSidebar from './Sidebar/AdminSidebar/Sidebar';
 import Sidebar from "./Sidebar/index"
 
-const AdminDashboard = () => {
+const AdminDashboard = ({user}) => {
     const [isOpen,setIsOpen] = useState(false);
     const toggle=()=>{
         setIsOpen(!isOpen);
@@ -12,7 +13,7 @@ const AdminDashboard = () => {
         <div
         >
 
-            <NavAdmin toggle={toggle}/>
+            <Navbar user={user} toggle={toggle}/>
             <Sidebar isOpen={isOpen} toggle={toggle} />
 
             <AdminSidebar />

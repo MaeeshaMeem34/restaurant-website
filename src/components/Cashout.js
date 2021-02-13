@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import { auth, db } from "../Firebase";
 import { CartContext } from "./contexts/CartContext";
 
-import { useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import Navbar from "./Navbar/UserNavbar/Navbar";
 import emailjs from "emailjs-com";
 
@@ -179,9 +179,21 @@ const Cashout = ({ user }) => {
            
           />
           <br />
-          <button type="submit" className="btn btn-success btn-md mybtn">
-            SUBMIT
-          </button>
+
+
+          
+    <div className="btn-toolbar mx-6 ">
+    <button type="submit"  className="btn btn-primary btn-sm mr-4">Submit</button>
+        <Link className="btn btn-default mx-6" to="/" >Cancel </Link>
+     </div>
+     
+
+
+
+    
+
+
+
         </form>
         {error && <span className="error-msg">{error}</span>}
       </div>

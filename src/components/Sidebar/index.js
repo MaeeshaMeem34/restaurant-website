@@ -9,15 +9,18 @@ const Sidebar = ({isOpen,toggle}) => {
             <Icon> 
                 <CloseIcon/>
             </Icon>
+
+            
             <SidebarMenu>
                 <SidebarLink to="/pizzas"> pizzaas </SidebarLink>
                 <SidebarLink to="/desserts"> desserts </SidebarLink>
                 <SidebarLink to="/"> full menu </SidebarLink>
             </SidebarMenu>
-
             <SideBtnWrap>
-                <SidebarRoute to="/"> Order Now</SidebarRoute>
+                <SidebarRoute to="#"> Our Full Menu</SidebarRoute>
             </SideBtnWrap>
+
+            
         </SidebarContainer>
         
     )

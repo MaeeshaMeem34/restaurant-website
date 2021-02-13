@@ -3,9 +3,9 @@ import { Link } from 'react-router-dom';
 
 export const ProductsContainer = styled.div`
   /* width: 100vw; */
-  min-height: 100vh;
+  min-height: 80vh;
   padding: 5rem calc((100vw - 1300px) / 2);
-  background: #150f0f;
+  background: linear-gradient(90deg, rgba(8, 8, 31, 100) 0%, rgba(8, 8, 35, 90) 100%);
   color: #fff;
 `;
 
@@ -18,8 +18,10 @@ export const ProductWrapper = styled.div`
 
 export const ProductCard = styled.div`
   margin: 0 2rem;
-  line-height: 2;
+  line-height: 1;
   width: 300px;
+  height: fit-content
+ 
 `;
 
 export const ProductImg = styled.img`
@@ -55,14 +57,14 @@ export const ProductDesc = styled.p`
 
 export const ProductPrice = styled.p`
   margin-bottom: 1rem;
-  font-size: 2rem;
+  font-size: 1rem;
 `;
 
 export const ItemLink = styled(Link)`
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.5rem;
+  font-size: 1.1rem;
   text-decoration: none;
   list-style: none;
   transition: 0.2s ease-in-out;
@@ -71,5 +73,6 @@ export const ItemLink = styled(Link)`
   &:hover {
     color: #e31837;
     transition: 0.2s ease-in-out;
+    text-decoration: none
   }
 `;
