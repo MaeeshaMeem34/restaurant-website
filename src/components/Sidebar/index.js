@@ -12,12 +12,12 @@ const Sidebar = ({isOpen,toggle}) => {
 
             
             <SidebarMenu>
-                <SidebarLink to="/pizzas"> pizzaas </SidebarLink>
-                <SidebarLink to="/desserts"> desserts </SidebarLink>
-                <SidebarLink to="/"> full menu </SidebarLink>
+                <SidebarLink to="/pizzas"> Pizzaas </SidebarLink>
+                <SidebarLink to="/desserts"> Desserts </SidebarLink>
+                <SidebarLink to="/"> Chinese </SidebarLink>
             </SidebarMenu>
             <SideBtnWrap>
-                <SidebarRoute to="#"> Our Full Menu</SidebarRoute>
+                <SidebarRoute to="#"> Our  Menu</SidebarRoute>
             </SideBtnWrap>
 
             

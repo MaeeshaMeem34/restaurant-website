@@ -1,4 +1,4 @@
-import React,{useContext, useEffect} from 'react'
+import React,{useContext, useEffect, useState} from 'react'
 import { db } from '../../Firebase';
 import { PizzaContext } from '../contexts/ProductContext/PizzaContext';
 import "./Pizzas.css";
@@ -7,34 +7,41 @@ import {useHistory} from 'react-router-dom';
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Navbar from '../Navbar/UserNavbar/Navbar';
+import Sidebar from '../Sidebar';
 
 toast.configure();
 
 
 
-const PizzaTable = ({user}) => {
+const PizzaTable = ({user,props}) => {
     const { pizzas } = useContext(PizzaContext);
     const history = useHistory();
 
     const onDelete=(id)=>{
       
         db.collection("Products").doc(id).delete().then(()=>{
+            history.push('/pizzatable');
             console.log("item deleted successfully")
             toast.info("item deleted successfully", {
                 position: "top-right",
-                autoClose: 1000,
+                autoClose: 2000,
                 hideProgressBar: false,
                 closeOnClick: true,
                 pauseOnHover: false,
                 draggable: false,
                 progress: undefined,
               });
-            history.push('/pizzatable');
+            
 
             
         })
 
     }
+
+    const [isOpen,setIsOpen] = useState(false);
+    const toggle=()=>{
+        setIsOpen(!isOpen);
+    };
 
 
   
@@ -43,7 +50,8 @@ const PizzaTable = ({user}) => {
 
     return (
         <>
-        <Navbar user={user}   />
+        <Navbar user={user} toggle={toggle}  />
+        <Sidebar isOpen={isOpen} toggle={toggle}/>
         <div className="row justify-content-center"> 
         <div className="col-auto"> 
         <div className="table table-bordered table-striped table-hover">
@@ -66,7 +74,7 @@ const PizzaTable = ({user}) => {
                 <td> {product.ProductImg} </td>
                 <td> <button className="btn-danger" onClick={()=>{
                     onDelete(product.ID)
-                }}>  delete</button> </td>
+                }}>  Delete</button> </td>
              </tr>
 
                 )}

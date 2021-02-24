@@ -5,7 +5,7 @@ export const ProductsContainer = styled.div`
   /* width: 100vw; */
   min-height: 80vh;
   padding: 5rem calc((100vw - 1300px) / 2);
-  background: linear-gradient(90deg, rgba(8, 8, 31, 100) 0%, rgba(8, 8, 35, 90) 100%);
+  background: #150f0f;
   color: #fff;
 `;
 

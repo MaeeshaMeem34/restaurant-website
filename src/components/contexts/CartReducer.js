@@ -18,7 +18,7 @@ export const CartReducer = (state, action) => {
         console.log("product already in cart");
         toast.info("this product is already in your cart", {
           position: "top-right",
-          autoClose: 1000,
+          autoClose: 2000,
           hideProgressBar: false,
           closeOnClick: true,
           pauseOnHover: false,

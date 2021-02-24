@@ -55,7 +55,7 @@ useEffect(() => {
 
       <AdminRoute user={user} path="/admindashboard/addpizza" component={()=><AddPizza user={user}/>} />
       <Route  path="/pizzas" exact component={()=> <Pizzas user={user}/>} />
-      <AdminRoute user={user} path="/pizzatable" exact component={()=><PizzaTable user={user}/>} />
+      <Route  path="/pizzatable" exact component={()=><PizzaTable user={user}/>} />
 
       <AdminRoute user={user} path="/admindashboard/adddessert" component={()=><AddDessert user={user}/>} />
       <Route path="/desserts" exact component={()=> <Desserts user={user}/>} />

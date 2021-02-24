@@ -10,6 +10,7 @@ import { Icon } from "react-icons-kit";
 import { cart } from "react-icons-kit/entypo/cart";
 import { CartContext } from "../../contexts/CartContext";
 import { useContext } from "react";
+import {GiChiliPepper} from "react-icons/gi"
 
 
 
@@ -56,7 +57,8 @@ const Navbar = ({ toggle, user }) => {
       <nav className="navbar">
         <Link to="/" className="navbar-logo">
           {" "}
-          PiZZA{" "}
+          Chef Chili{" "}
+          <GiChiliPepper/>
         </Link>
 
        
@@ -65,10 +67,13 @@ const Navbar = ({ toggle, user }) => {
         <li className="nav-item">
             {user == "admin" ? (
               <Link to="/admindashboard" className="nav-links" onClick={closeMobileMenu}>
-                {" "}
-                Dashboard{" "}
+                
+                Dashboard
               </Link>
-            ) : null}
+            ) :  <Link to="/" className="nav-links" onClick={closeMobileMenu}>
+           
+            Home
+          </Link>}
           </li>
          
           <li
@@ -108,7 +113,7 @@ const Navbar = ({ toggle, user }) => {
             <Icon icon={cart} size="25px"/>
            
           </Link>
-          <div style={{paddingLeft: "215px",paddingBottom:"32px"}}>
+          <div style={{paddingLeft: "125px",paddingBottom:"34px"}}>
           {totalQty}
           </div>
         </li>

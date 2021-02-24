@@ -37,13 +37,13 @@ export const SidebarData = [
         {
           title: ' Add Pizza',
           path: '/admindashboard/addpizza',
-          icon: <FaIcons.FaCartPlus/>,
+          icon: <FaIcons.FaPizzaSlice/>,
           cName: 'sub-nav'
         },
         {
           title: 'Add Dessert',
           path: '/admindashboard/adddessert',
-          icon: <FaIcons.FaCartPlus />,
+          icon: <RiIcons.RiCake3Line />,
           cName: 'sub-nav'
         },
         {
@@ -58,7 +58,7 @@ export const SidebarData = [
     {
       title: 'Display Items',
       path: '#',
-      icon: <FaIcons.FaEnvelopeOpenText />,
+      icon: <FaIcons.FaCartPlus />,
   
       iconClosed: <RiIcons.RiArrowDownSFill />,
       iconOpened: <RiIcons.RiArrowUpSFill />,
@@ -67,12 +67,12 @@ export const SidebarData = [
         {
           title: 'Pizzas',
           path: '/pizzatable',
-          icon: <IoIcons.IoIosPaper />
+          icon: <FaIcons.FaPizzaSlice/>
         },
         {
           title: 'Desserts',
           path: '/desserttable',
-          icon: <IoIcons.IoIosPaper />
+          icon: <RiIcons.RiCake3Fill />
         }
       ]
     },

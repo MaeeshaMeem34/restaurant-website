@@ -19,7 +19,7 @@ const Cart = ({ user }) => {
     CartContext
   );
 
-  const history = useHistory();
+  
 
   return (
     <>
@@ -31,11 +31,11 @@ const Cart = ({ user }) => {
           {shoppingCart.length === 0 && (
             <>
               <div>
-                no items in your cart or slow internet causing trouble (Refresh
-                the page) or you are not logged in
+               <h3>No items in your cart or slow internet causing trouble (Refresh
+                the page) or you are not logged in! </h3> 
               </div>
               <div>
-                <Link to="/">Return to Home page</Link>
+                <Link to="/">  <h4>Return to Home page  </h4>  </Link>
               </div>
             </>
           )}
@@ -49,7 +49,7 @@ const Cart = ({ user }) => {
                 <div className="cart-name"> {cart.ProductName} </div>
 
                 <div className="cart-price-orignal">
-                  Rs {cart.ProductPrice}.00
+                  Taka {cart.ProductPrice}.00
                 </div>
 
                 <div
@@ -68,7 +68,7 @@ const Cart = ({ user }) => {
                   <Icon icon={ic_remove} size={24} />
                 </div>
 
-                <div className="cart-price">Rs {cart.TotalProductPrice}.00</div>
+                <div className="cart-price">Taka {cart.TotalProductPrice}.00</div>
 
                 <button
                   className="delete-btn"
@@ -88,7 +88,7 @@ const Cart = ({ user }) => {
                 <span>{totalPrice}</span>
               </div>
               <div className="cart-summary-price">
-                <span>Total Qty</span>
+                <span>Total Quantity</span>
                 <span>{totalQty}</span>
               </div>
               <Link to="/cashout" className="cashout-link">

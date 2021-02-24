@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import {storage, db} from "../../Firebase";
-import NavAdmin from "../Navbar/AdminNavbar/NavAdmin";
+import Navbar from "../Navbar/UserNavbar/Navbar";
+import Sidebar from "../Sidebar";
 
 
-const AddDessert = () => {
+const AddDessert = ({user}) => {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState(0);
@@ -53,10 +54,16 @@ const AddDessert = () => {
             })
   }
 
+  const [isOpen,setIsOpen] = useState(false);
+  const toggle=()=>{
+      setIsOpen(!isOpen);
+  };
+
   return (
 
     <>
-    <NavAdmin />
+    <Navbar user={user} toggle={toggle}/>
+      <Sidebar isOpen={isOpen} toggle={toggle}/>
      
     <div className="container">
 

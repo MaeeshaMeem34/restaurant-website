@@ -54,6 +54,23 @@ const Cashout = ({ user }) => {
         }
       );
 
+
+      emailjs
+      .sendForm(
+        "service_j8cacbl",
+        "template_7rptpsi",
+        e.target,
+        "user_Wvt2ms2bgFZcR33h4rXh4"
+      )
+      .then(
+        (result) => {
+          console.log(result.text + "msg sent");
+        },
+        (error) => {
+          console.log(error.text);
+        }
+      );
+
     auth.onAuthStateChanged((user) => {
       if (user) {
         const date = new Date();
@@ -92,13 +109,13 @@ const Cashout = ({ user }) => {
 
   return (
     <>
-      <Navbar user={user}/>
+      <Navbar user={user} />
 
       <div className="container">
         <br />
         <h2>Cashout Details</h2>
         <br />
-        {successMsg && <div className="success-msg">{successMsg}</div>}
+        {successMsg && <div className="success-msg"> <h4>{successMsg}  </h4>   </div>}
         <form
           autoComplete="off"
           className="form-group"
@@ -111,7 +128,6 @@ const Cashout = ({ user }) => {
             required
             name="name"
             value={name}
-           
           />
           <br />
           <label htmlFor="email">Email</label>
@@ -121,7 +137,6 @@ const Cashout = ({ user }) => {
             required
             name="email"
             value={email}
-            
           />
           <br />
           <label htmlFor="Cell No">Item Name</label>
@@ -133,7 +148,6 @@ const Cashout = ({ user }) => {
                   type="text"
                   className="form-control"
                   required
-                  
                   value={cart.ProductName}
                   name="ItemName"
                 />{" "}
@@ -176,24 +190,18 @@ const Cashout = ({ user }) => {
             className="form-control"
             required
             value={totalQty}
-           
+            name="totalQty"
           />
           <br />
 
-
-          
-    <div className="btn-toolbar mx-6 ">
-    <button type="submit"  className="btn btn-primary btn-sm mr-4">Submit</button>
-        <Link className="btn btn-default mx-6" to="/" >Cancel </Link>
-     </div>
-     
-
-
-
-    
-
-
-
+          <div className="btn-toolbar mx-6 ">
+            <button type="submit" className="btn btn-primary btn-sm mr-4">
+              Submit
+            </button>
+            <Link className="btn btn-default mx-6" to="/">
+              Cancel{" "}
+            </Link>
+          </div>
         </form>
         {error && <span className="error-msg">{error}</span>}
       </div>

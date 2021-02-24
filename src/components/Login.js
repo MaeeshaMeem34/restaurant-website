@@ -4,7 +4,7 @@ import { Button, Card, Form, Alert, Container } from "react-bootstrap";
 import { Link, useHistory } from "react-router-dom";
 import { auth } from "../Firebase";
 
-import { useAdminAuth } from "./contexts/AdminAuthContext";
+
 
 const LogIn = () => {
   const [email, setEmail] = useState("");
@@ -18,14 +18,14 @@ const LogIn = () => {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
-  const { adminlogin } = useAdminAuth();
+  
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (
-      emailRef.current.value === "admin@gmail.com" &&
-      passwordRef.current.value === "password"
+      emailRef.current.value === "admin@gmail.com" 
+    
     ) {
       await auth
       .signInWithEmailAndPassword(emailRef.current.value, passwordRef.current.value)

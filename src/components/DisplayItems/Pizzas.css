@@ -50,10 +50,13 @@ h1 {
     margin-top: 5px;
 }
 
-.products-container .product-card .product-price {
-    width: 100%;
+.products-container .product-card .product-price .description{
+    display: block;
+    width: 100%; 
     margin-top: 5px;
     margin-bottom: 5px;
+    text-align: center;
+    justify-content: center;
 }
 
 .products-container .product-card .addcart-btn {
