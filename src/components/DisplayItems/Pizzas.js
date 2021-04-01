@@ -4,6 +4,7 @@ import {CartContext} from '../contexts/CartContext'
 import "./Pizzas.css";
 import Navbar  from '../Navbar/UserNavbar/Navbar';
 import Sidebar from "../Sidebar/index";
+import {FooterContainer} from "../Footer";
 
 
 
@@ -54,6 +55,8 @@ const Pizzas = ({user}) => {
             </div>
           ))}
         </div>
+
+        <FooterContainer />
       </>
 
 

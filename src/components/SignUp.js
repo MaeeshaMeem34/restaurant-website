@@ -18,7 +18,7 @@ const SignUp = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    try {
+   
       setLoading(true);
       setError("");
       auth.createUserWithEmailAndPassword(email, password).then((cred) => {
@@ -36,10 +36,13 @@ const SignUp = () => {
             setError("");
             history.push("/login");
           });
-      });
-    } catch (error) {
-      setError(error);
-    }
+      }).catch((error)=>{
+        setError(error);
+
+      })
+    
+     
+    
     setLoading(false);
   };
 

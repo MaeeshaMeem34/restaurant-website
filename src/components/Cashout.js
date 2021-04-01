@@ -31,6 +31,8 @@ const Cashout = ({ user }) => {
             setEmail(snapshot.data().Email);
           });
       } else {
+        setName(null);
+        setEmail(null);
         history.push("/login");
       }
     });

@@ -6,6 +6,7 @@ import Navbar from "../Navbar/UserNavbar/Navbar";
 import Sidebar from "../Sidebar/index";
 
 import { DessertContext } from "../contexts/ProductContext/DessertContext";
+import { FooterContainer } from "../Footer";
 
 const Desserts = ({ user }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -47,6 +48,8 @@ const Desserts = ({ user }) => {
           ))}
         </div>
       </>
+
+      <FooterContainer />
     </>
   );
 };
